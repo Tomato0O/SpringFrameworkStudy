@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 可以导入外部xml -->
+    <import resource="./empty.xml"/>
+
+    <!--
+        id 属性是一个字符串，用于识别单个Bean定义。
+        class 属性定义了 Bean 的类型，并使用类的全路径名。
+        如果你想为Bean引入其他别名，你也可以在 `name` 属性中指定它们
+    -->
+    <bean id="stu1" class="org.example.pojo.Student" name="student_zhang_san,zhang_san">
+        <property name="id" value="1"/>
+        <property name="age" value="18"/>
+        <property name="sex" value='男'/>
+    </bean>
+
+    <!-- 使用别名 -->
+    <alias name="stu1" alias="a1"/>
+</beans>

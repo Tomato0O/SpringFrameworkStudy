@@ -1,0 +1,15 @@
+<configuration>
+    <!-- 控制台输出日志带颜色 -->
+    <appender name="COLORED_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                <!-- %highlight 用来根据日志级别自动添加颜色 -->
+                %d{yyyy-MM-dd HH:mm:ss} [%thread] %highlight(%-5level) %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="COLORED_CONSOLE"/>
+    </root>
+</configuration>
