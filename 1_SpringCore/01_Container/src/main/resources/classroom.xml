@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--如果 bean 定义中的构造器参数不存在潜在的歧义，
+        那么构造器参数在 bean 定义中的定义顺序就是这些参数在 bean 被实例化时被提供给适当的构造器的顺序。-->
+    <bean id="classroom1" class="org.example.pojo.Classroom">
+        <!-- 使用index属性可以进行构造函数的参数索引，下标从0开始。 -->
+        <constructor-arg index="0" value="11"/>
+        <!-- type属性可以显式指定构造函数的参数类型 -->
+        <constructor-arg value="11" type="java.lang.String"/>
+        <constructor-arg value="11"/>
+    </bean>
+
+    <!-- 空构造 -->
+    <bean id="classroom2" class="org.example.pojo.Classroom"/>
+
+    <bean id="classroom3" class="org.example.pojo.Classroom">
+        <!-- 使用name属性可以进行消歧 -->
+        <constructor-arg name="num" value="30"/>
+        <constructor-arg name="teacherName" value="小王老师"/>
+        <constructor-arg name="subject" value="计算机基础"/>
+    </bean>
+
+    <!-- -->
+</beans>
