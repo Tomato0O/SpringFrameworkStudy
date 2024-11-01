@@ -25,5 +25,35 @@
         <constructor-arg name="subject" value="计算机基础"/>
     </bean>
 
-    <!-- -->
+    <!-- 使用property标签进行setter注入 -->
+    <bean id="classroom4" class="org.example.pojo.Classroom">
+        <property name="num" value="20"/>
+        <property name="teacherName" value="张老师"/>
+    </bean>
+
+    <!-- 使用p-namespace进行更简单的配置，同样也是setter注入的原理 -->
+    <bean id="classroom5" class="org.example.pojo.Classroom" p:num="10" p:subject="Java实验室"/>
+
+    <!-- 配置一个Properties实例 -->
+    <bean id="mappings"
+          class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+        <!-- typed as a java.util.Properties -->
+        <property name="properties">
+            <value>
+                jdbc.driver.className=com.mysql.jdbc.Driver
+                jdbc.url=jdbc:mysql://localhost:3306/mydb
+            </value>
+        </property>
+    </bean>
+
+    <bean id="classroom6" class="org.example.pojo.Classroom">
+        <property name="teacherName">
+            <!--
+                引用指定bean的id名称(字符串)，相对于传统的直接赋值，ioc容器会检查值的名称以防错
+                 如果bean的作用域scope为prototype则只有在实例化bean的时候才会发现错误
+                 -->
+            <!-- 这里的teacherName以Setter的方式注入到容器中，值为classroom1 -->
+            <idref bean="classroom1"/>
+        </property>
+    </bean>
 </beans>

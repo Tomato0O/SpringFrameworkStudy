@@ -1,13 +1,11 @@
 package org.example.pojo;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-class Classroom {
+@ToString
+public class Classroom {
 
     Classroom() {
         log.info("No args constructor.");
@@ -21,22 +19,15 @@ class Classroom {
     }
 
     @Setter
-    @Getter
     private int num;
 
     @Setter
-    @Getter
     private String subject;
 
     private String teacherName;
 
-    public String getTeacherName() {
-        log.info("Getter");
-        return teacherName;
-    }
-
     public void setTeacherName(String teacherName) {
-        log.info("Setter");
+        log.info("Setter set teacherName.");
         this.teacherName = teacherName;
     }
 }
